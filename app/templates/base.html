@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    {% block head %}{% endblock %}
+</head>
+
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='images/logo.svg') }}" alt="logo" class="logo">
+        <nav>
+            <ul>
+                <li><a href="/" class="navlink">
+                        <img src="{{ url_for('static', filename='images/home_icon.svg')}}" alt="home icon" class="icon">
+                        Home
+                    </a></li>
+                <li><a href="/learn" class="navlink">
+                        <img src="{{ url_for('static', filename='images/book_icon.svg')}}" alt="book icon" class="icon">
+                        Learn
+                    </a></li>
+                <li><a href="/play" class="navlink">
+                        <img src="{{ url_for('static', filename='images/controller_icon.svg')}}" alt="controller icon"
+                            class="icon">
+                        Play
+                    </a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% block main %}{% endblock %}
+    </main>
+
+    <footer>
+        <div id="footer_top">
+            <img src="{{ url_for('static', filename='images/logo.svg') }}" alt="logo" class="logo">
+            <a href="/">
+                <img src="{{ url_for('static', filename='images/home_icon.svg') }}" alt="home icon" class="icon">
+                Home
+            </a>
+            <a href="/learn">
+                <img src="{{ url_for('static', filename='images/book_icon.svg') }}" alt="book icon" class="icon">
+                Learn
+            </a>
+            <a href="/play">
+                <img src="{{ url_for('static', filename='images/controller_icon.svg') }}" alt="controller icon"
+                    class="icon">
+                Play
+            </a>
+        </div>
+
+        <hr>
+
+        <div id="footer_bottom">
+            <div>
+                <h3>Navigation</h3>
+                <div>
+                    <a href="/">Home</a>
+                    <a href="/learn">Learn</a>
+                    <a href="/play">Play</a>
+                </div>
+                <div>
+                    <a href="">[Specific section]</a>
+                    <a href="">[Specific section]</a>
+                    <a href="">[Specific section]</a>
+                </div>
+            </div>
+
+            <div>
+                <h3>Resources</h3>
+                <a href="">[Topic - source]</a>
+                <a href="">[Topic - source]</a>
+                <a href="">[Topic - source]</a>
+            </div>
+        </div>
+
+        <p>&copy; 2026 Levi Poulton. All rights reserved. Website designed and developed by Levi Poulton, with
+            AI-assisted content creation.</p>
+    </footer>
+</body>
+
+</html>
