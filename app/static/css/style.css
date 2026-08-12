@@ -1,5 +1,214 @@
-/* To make the overview easier to see. */
-.icon,
-.logo {
+:root {
+    /* Colours */
+    --background: #d9d9d9;
+    --foreground: #545454;
+    --foreground-text: #b7c9e2;
+    --element-colour: #7f73e3;
+
+    font-size: 16px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    background-color: var(--background);
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+    margin: 0;
+}
+
+main {
+    flex: 1;
+}
+
+header,
+footer {
+    background-color: var(--foreground);
+    width: 100%;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+/* Font classes */
+.architects_daughter {
+    font-family: "Architects Daughter", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.inter {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* Style Header and Footer elements. */
+.logo,
+header .navlink>img {
     height: 100px;
+    padding: 1rem;
+    margin: auto;
+}
+
+header,
+#footer_top {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+header ul,
+footer ul {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    justify-content: center;
+    margin: auto;
+    gap: 1rem;
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+footer,
+footer a {
+    color: var(--foreground-text);
+}
+
+footer hr {
+    height: 6px;
+    width: 60%;
+    margin: auto;
+    background-color: var(--element-colour);
+    border: none;
+    border-radius: 1rem;
+}
+
+.navlink {
+    display: flex;
+    text-decoration: none;
+    color: var(--foreground-text);
+}
+
+.navlink>p {
+    align-content: center;
+    justify-content: center;
+    font-size: 3rem;
+}
+
+footer .navlink>img {
+    height: 100px;
+    padding: 0 1rem 0 0;
+}
+
+#footer_top {
+    margin: 1rem auto;
+}
+
+#footer_bottom {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 1rem;
+    justify-content: space-evenly;
+}
+
+#footer_navigation>div {
+    display: flex;
+}
+
+footer h3 {
+    margin: auto;
+    padding: 1rem;
+}
+
+#footer_navigation>div>div {
+    display: flex;
+    flex-direction: column;
+    padding: 0 1rem 1rem;
+}
+
+#footer_resources>div {
+    display: flex;
+    flex-direction: column;
+    padding: 0 1rem 1rem;
+}
+
+footer>p {
+    width: 80%;
+    margin: auto;
+}
+
+/* Only apply to laptops. */
+@media screen and (min-width: 1024px) {
+
+    .logo {
+        margin: auto;
+        width: auto;
+    }
+
+    header .logo {
+        height: 200px;
+    }
+
+    footer .logo {
+        height: 150px;
+        padding: 0 1rem;
+    }
+
+    nav {
+        margin: 0 2rem 0 auto;
+    }
+
+    ul {
+        gap: 2rem;
+    }
+
+    header .navlink {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    header .navlink>img {
+        padding-bottom: 0;
+    }
+
+    footer>p {
+        padding: 1rem;
+    }
+}
+
+/* Only apply to tablets and smaller devices. */
+@media screen and (max-width: 768px) {
+
+    /* Enlarge logo on smaller devices, pushing the navigation below it. */
+    .logo {
+        margin: 0 auto;
+        padding: 1rem 0;
+        width: 100%;
+        height: auto;
+        max-width: 400px;
+        flex-basis: 100%;
+    }
+
+    header .navlink>img {
+        height: 64px;
+    }
+
+    ul {
+        gap: 0;
+    }
 }

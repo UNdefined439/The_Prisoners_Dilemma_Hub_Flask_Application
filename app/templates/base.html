@@ -5,26 +5,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <!-- Architects Daughter and Inter from Google Fonts. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
     {% block head %}{% endblock %}
 </head>
 
 <body>
-    <header>
+    <header class="architects_daughter">
         <img src="{{ url_for('static', filename='images/logo.svg') }}" alt="logo" class="logo">
         <nav>
             <ul>
                 <li><a href="/" class="navlink">
                         <img src="{{ url_for('static', filename='images/home_icon.svg')}}" alt="home icon" class="icon">
-                        Home
+                        <p>Home</p>
                     </a></li>
                 <li><a href="/learn" class="navlink">
                         <img src="{{ url_for('static', filename='images/book_icon.svg')}}" alt="book icon" class="icon">
-                        Learn
+                        <p>Learn</p>
                     </a></li>
                 <li><a href="/play" class="navlink">
                         <img src="{{ url_for('static', filename='images/controller_icon.svg')}}" alt="controller icon"
                             class="icon">
-                        Play
+                        <p>Play</p>
                     </a></li>
             </ul>
         </nav>
@@ -35,45 +42,56 @@
     </main>
 
     <footer>
-        <div id="footer_top">
+        <div id="footer_top" class="architects_daughter">
             <img src="{{ url_for('static', filename='images/logo.svg') }}" alt="logo" class="logo">
-            <a href="/">
-                <img src="{{ url_for('static', filename='images/home_icon.svg') }}" alt="home icon" class="icon">
-                Home
-            </a>
-            <a href="/learn">
-                <img src="{{ url_for('static', filename='images/book_icon.svg') }}" alt="book icon" class="icon">
-                Learn
-            </a>
-            <a href="/play">
-                <img src="{{ url_for('static', filename='images/controller_icon.svg') }}" alt="controller icon"
-                    class="icon">
-                Play
-            </a>
+
+            <nav>
+                <ul>
+                    <li><a href="/" class="navlink">
+                            <img src="{{ url_for('static', filename='images/home_icon.svg')}}" alt="home icon"
+                                class="icon">
+                            <p>Home</p>
+                        </a></li>
+                    <li><a href="/learn" class="navlink">
+                            <img src="{{ url_for('static', filename='images/book_icon.svg')}}" alt="book icon"
+                                class="icon">
+                            <p>Learn</p>
+                        </a></li>
+                    <li><a href="/play" class="navlink">
+                            <img src="{{ url_for('static', filename='images/controller_icon.svg')}}"
+                                alt="controller icon" class="icon">
+                            <p>Play</p>
+                        </a></li>
+                </ul>
+            </nav>
         </div>
 
         <hr>
 
-        <div id="footer_bottom">
-            <div>
+        <div id="footer_bottom" class="inter">
+            <div id="footer_navigation">
                 <h3>Navigation</h3>
                 <div>
-                    <a href="/">Home</a>
-                    <a href="/learn">Learn</a>
-                    <a href="/play">Play</a>
-                </div>
-                <div>
-                    <a href="">[Specific section]</a>
-                    <a href="">[Specific section]</a>
-                    <a href="">[Specific section]</a>
+                    <div>
+                        <a href="/">Home</a>
+                        <a href="/learn">Learn</a>
+                        <a href="/play">Play</a>
+                    </div>
+                    <div>
+                        <a href="">[Specific section]</a>
+                        <a href="">[Specific section]</a>
+                        <a href="">[Specific section]</a>
+                    </div>
                 </div>
             </div>
 
-            <div>
+            <div id="footer_resources">
                 <h3>Resources</h3>
-                <a href="">[Topic - source]</a>
-                <a href="">[Topic - source]</a>
-                <a href="">[Topic - source]</a>
+                <div>
+                    <a href="">[Topic - source]</a>
+                    <a href="">[Topic - source]</a>
+                    <a href="">[Topic - source]</a>
+                </div>
             </div>
         </div>
 
