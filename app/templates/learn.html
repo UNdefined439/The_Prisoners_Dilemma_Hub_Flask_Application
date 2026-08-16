@@ -1,9 +1,167 @@
-{% extends 'base.html' %}
-
-{% block head %}
+{% extends 'base.html' %} {% block head %}
 <title>Prisoner's Dilemma - Learn</title>
-{% endblock %}
+{% endblock %} {% block main %}
+<h1 class="inter">Learn</h1>
 
-{% block main %}
-<h1>Learn</h1>
+<section id="learn_info">
+	<div class="content_block">
+		<h3 class="content_title inter">The Setup</h3>
+		<div class="content">
+			<p class="content_text roboto">
+				Two suspects are arrested and interrogated in separate rooms, with no way to talk to each other or agree on a
+				story. Each one has to decide, entirely on their own, what to tell the police. What happens to them depends not
+				just on their own choice, but on what the other person decides too — and neither will find out the other's
+				choice until it's too late to change their own.
+			</p>
+			<img
+				src="{{ url_for('static', filename='images/the_setup.png') }}"
+				alt="Two suspects making decisions without communicating."
+				class="content_img" />
+		</div>
+	</div>
+
+	<div class="content_block">
+		<h3 class="content_title inter">Cooperate or Defect</h3>
+		<div class="content">
+			<p class="content_text roboto">
+				Each suspect has exactly two options: stay quiet and back the other person up, or turn on them and confess. In
+				the language of the game, staying quiet is called <dfn> cooperating</dfn>
+				<span class="definition"
+					>[choosing the option that benefits both players, or the group, over yourself alone]</span
+				>, and confessing is called <dfn>defecting</dfn>
+				<span class="definition"
+					>[choosing the option that benefits you individually, even at the other player's expense]</span
+				>. Every version of the Prisoner's Dilemma comes down to this same choice, made by both people at once.
+			</p>
+			<img
+				src="{{ url_for('static', filename='images/options.png') }}"
+				alt="Two simple coloured figures represent the choice between cooperation and defection."
+				class="content_img" />
+		</div>
+	</div>
+
+	<div class="content_block">
+		<h3 class="content_title inter">The Payoff Matrix</h3>
+		<div class="content">
+			<p class="content_text roboto">
+				What happens to each suspect depends on the combination of both choices, not just their own — this is usually
+				mapped out in a <dfn>payoff matrix</dfn>
+				<span class="definition">[a grid showing the result of every possible combination of choices]</span>. For our
+				two suspects, it looks like this table. Mutual cooperation gets a light sentence for both. Mutual defection gets
+				a harsher one for both. But when only one person defects, that person walks away completely free — at the
+				other's expense.
+			</p>
+			<img
+				src="{{ url_for('static', filename='images/table.png') }}"
+				alt="A two-by-two payoff matrix shows the four possible outcomes when two players cooperate or defect."
+				class="content_img" />
+		</div>
+	</div>
+
+	<div class="content_block">
+		<h3 class="content_title inter">The Dominant Strategy</h3>
+		<div class="content">
+			<p class="content_text roboto">
+				Now imagine deciding what to do without knowing what the other suspect will pick. If they cooperate, you come
+				out ahead by defecting — you go free instead of serving a year. If they defect, you still come out ahead by
+				defecting — two years beats three. Either way, no matter what the other person chooses, defecting gives you the
+				better result. That makes defecting a <dfn>dominant strategy</dfn>
+				<span class="definition"
+					>[a choice that gives you a better outcome than the alternative, no matter what the other player does]</span
+				>
+				here.
+			</p>
+			<img src="" alt="" class="content_img" />
+		</div>
+	</div>
+
+	<div class="content_block">
+		<h3 class="content_title inter">The Dilemma</h3>
+		<div class="content">
+			<p class="content_text roboto">
+				Here's the catch: if both suspects follow that same logic, they both defect — and both end up with two years.
+				But if they'd both cooperated instead, they'd have gotten just one year each. Neither one can improve their own
+				outcome by switching their choice alone, which is what makes mutual defection a <dfn>Nash equilibrium</dfn>
+				<span class="definition"
+					>[a combination of choices where no player can get a better result by changing only their own choice]</span
+				>
+				— and yet it's worse for both of them than mutual cooperation would have been. That gap, between what's rational
+				for each person individually and what's best for the two of them together, is the dilemma.
+			</p>
+			<img src="" alt="" class="content_img" />
+		</div>
+	</div>
+
+	<div class="content_block">
+		<h3 class="content_title inter">A Known Number of Rounds</h3>
+		<div class="content">
+			<p class="content_text roboto">
+				Everything so far has assumed the suspects only play once. Now imagine the same two people play the game
+				repeatedly — say, ten rounds — and both know that number going in. You might expect that to encourage
+				cooperation. It doesn't. In the final round, there's no future left to protect, so defecting is once again the
+				better move, exactly like a single round. But since both players know the last round ends in defection anyway,
+				the second-to-last round has nothing left to protect either, so it collapses too — and that logic keeps working
+				backward, round by round, all the way to the first move. This is called <dfn>backward induction</dfn>
+				<span class="definition"
+					>[reasoning about the final round first, then working back through each earlier round to see what it
+					implies]</span
+				>. Knowing exactly how many rounds you'll play, it turns out, doesn't rescue cooperation at all.
+			</p>
+			<img src="" alt="" class="content_img" />
+		</div>
+	</div>
+
+	<div class="content_block">
+		<h3 class="content_title inter">An Unknown Number of Rounds</h3>
+		<div class="content">
+			<p class="content_text roboto">
+				Take away that certainty, though, and the picture changes. Suppose neither player knows exactly when the game
+				will end — maybe after every round there's just some chance it continues, and some chance it stops for good. Now
+				there's no final round to reason backward from, since every round might be the last one, but also might not be.
+				That uncertainty means a defection today could trigger round after round of retaliation tomorrow — a risk
+				sometimes called the <dfn>shadow of the future</dfn>
+				<span class="definition">[the way possible future consequences shape what's rational to do right now]</span>.
+				Under the right conditions, that risk is enough to make cooperating the smarter long-term bet after all, which
+				is a big part of why cooperation shows up far more often in ongoing relationships than the single-round logic
+				would ever predict.
+			</p>
+			<img src="" alt="" class="content_img" />
+		</div>
+	</div>
+
+	<div class="content_block">
+		<h3 class="content_title inter">Tit for Tat</h3>
+		<div class="content">
+			<p class="content_text roboto">
+				So if repetition can sustain cooperation, what's actually a good way to play? The most famous answer is
+				<dfn>tit for tat</dfn>
+				<span class="definition"
+					>[start by cooperating, then on every later round just copy whatever the other player did last time]</span
+				>. It rewards cooperation with cooperation, punishes defection with defection, and forgives immediately the
+				moment the other player goes back to cooperating. When researchers have pitted different repeated-play
+				strategies against each other in tournaments, tit for tat has repeatedly come out on top — not because it's
+				clever or complicated, but because it manages to be cooperative and hard to exploit at the same time. It isn't
+				unbeatable, and how well any strategy performs still depends heavily on who else is playing, but for a simple,
+				general-purpose approach, it's the one most often held up as the benchmark.
+			</p>
+			<img src="" alt="" class="content_img" />
+		</div>
+	</div>
+
+	<div class="content_block">
+		<h3 class="content_title inter">Other Strategies</h3>
+		<div class="content">
+			<p class="content_text roboto">
+				Tit for tat is far from the only approach that's been tried. Researchers have tested countless repeated-play
+				strategies over the years — more forgiving ones, more punishing ones, ones that adapt to how the other player
+				has behaved so far, ones built to exploit patterns rather than reciprocate them — and no single strategy wins in
+				every situation; how well one performs depends heavily on what it's up against. That variety is really the
+				throughline of ongoing research into repeated play: not one correct way to play the game, but a whole landscape
+				of strategies, each with its own strengths and blind spots. Many of which are covered in the
+				<a href="/play">Play</a> page.
+			</p>
+			<img src="" alt="" class="content_img" />
+		</div>
+	</div>
+</section>
 {% endblock %}
