@@ -11,7 +11,11 @@ class Action(Enum):
 
 @dataclass
 class GameState:
-    """History of actions in a game of the Prisoner's Dilemma."""
+    """Stores the history of actions in a game of the Prisoner's Dilemma (Player, Bot) and the current round number (0-indexed)."""
 
     history: list[tuple[Action | None, Action | None]]
-    round_number: int
+    round: int
+
+
+class GameError(Exception):
+    """An error that will be raised when a bot fails to find a action."""
