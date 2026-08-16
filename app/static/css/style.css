@@ -5,7 +5,7 @@
     --foreground-text: #b7c9e2;
     --element-colour: #7f73e3;
 
-    font-size: 16px;
+    font-size: 18px;
 }
 
 * {
@@ -34,8 +34,14 @@ footer {
     width: 100%;
 }
 
+h1 {
+    font-size: 5rem;
+    text-align: center;
+    padding: 1rem;
+}
+
 h3 {
-    font-size: 1.5rem;
+    font-size: 3rem;
 }
 
 /* Font classes */
@@ -50,6 +56,15 @@ h3 {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
+}
+
+.roboto {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
 }
 
 /* Style Header and Footer elements. */
@@ -152,6 +167,57 @@ footer>p {
     margin: auto;
 }
 
+/* Style content blocks */
+.content_block {
+    display: flex;
+    flex-direction: column;
+    min-width: 60%;
+    width: max-content;
+    margin: auto;
+    gap: .5rem;
+}
+
+.content_title {
+    padding-left: 1rem;
+    min-width: 50%;
+    width: max-content;
+    border-bottom: solid 8px var(--element-colour);
+}
+
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.content_text {
+    width: 50ch;
+    font-size: 1rem;
+    text-indent: 2rem;
+}
+
+dfn {
+    font-weight: bold;
+}
+
+.definition {
+    font-style: italic;
+    font-weight: 350;
+}
+
+.content_img {
+    height: 300px;
+}
+
+.content a,
+.content a:visited,
+.content a:hover,
+.content a:active {
+    color: var(--element-colour);
+}
+
 /* Only apply to laptops. */
 @media screen and (min-width: 1024px) {
 
@@ -210,5 +276,10 @@ footer>p {
 
     ul {
         gap: 0;
+    }
+
+    .content_img {
+        height: auto;
+        width: 100%;
     }
 }
