@@ -13,7 +13,7 @@ class Action(Enum):
 class GameState:
     """Stores the history of actions in a game of the Prisoner's Dilemma (Player, Bot) and the current round number (0-indexed)."""
 
-    history: list[tuple[Action | None, Action | None]]
+    history: list[list[Action | None]]
     round: int
 
 

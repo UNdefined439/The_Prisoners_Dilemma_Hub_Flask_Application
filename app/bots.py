@@ -6,6 +6,9 @@ import random
 class Bot(ABC):
     """Base class which all bot's inherit from."""
 
+    BLURB: str
+    NAME: str
+
     @classmethod
     @abstractmethod
     def get_action(cls, game_state: GameState) -> Action:
@@ -15,6 +18,9 @@ class Bot(ABC):
 
 class TitForTat(Bot):
     """A class containing the functionality of a bot that implements the Prisoner's Dilemma strategy 'Tit for Tat' - a strategy which repeats whatever move the opponent made last round."""
+
+    BLURB = "Tit for tat is a strategy which repeats whatever move the opponent made last round."
+    NAME = "Tit for Tat"
 
     @classmethod
     def get_action(cls, game_state: GameState) -> Action:
@@ -35,6 +41,9 @@ class TitForTat(Bot):
 class AlwaysDefect(Bot):
     """A class containing the functionality of a bot that implements the Prisoner's Dilemma strategy 'Always Defect' - a strategy which defects regardless of the game state."""
 
+    BLURB = "Always Defect is a straightforward strategy that will always defect."
+    NAME = "Always Defect"
+
     @classmethod
     def get_action(cls, game_state: GameState) -> Action:
         return Action.DEFECT
@@ -42,6 +51,11 @@ class AlwaysDefect(Bot):
 
 class AlwaysCooperate(Bot):
     """A class containing the functionality of a bot that implements the Prisoner's Dilemma strategy 'Always Cooperate' - a strategy which cooperates regardless of the game state."""
+
+    BLURB = (
+        "Always Co-operate is a straightforward strategy that will always co-operate."
+    )
+    NAME = "Always Co-operate"
 
     @classmethod
     def get_action(cls, game_state: GameState) -> Action:
@@ -51,6 +65,9 @@ class AlwaysCooperate(Bot):
 class Random(Bot):
     """A class containing the functionality of a bot that implements the Prisoner's Dilemma strategy 'Random' - a strategy which picks at random regardless of the game state."""
 
+    BLURB = "The random strategy has no pattern, or strategy, and is just completely random."
+    NAME = "Random"
+
     @classmethod
     def get_action(cls, game_state: GameState) -> Action:
         return random.choice([Action.COOPERATE, Action.DEFECT])
@@ -58,6 +75,11 @@ class Random(Bot):
 
 class Pavlov(Bot):
     """A class containing the functionality of a bot that implements the Prisoner's Dilemma strategy 'Pavlov' - a strategy which repeats its previous action if it received a high pay off, if it received a low pay off it switches."""
+
+    BLURB = (
+        "Pavlov is a strategy which bases its decisions based off last rounds results."
+    )
+    NAME = "Pavlov"
 
     @classmethod
     def get_action(cls, game_state: GameState) -> Action:
@@ -82,6 +104,9 @@ class Pavlov(Bot):
 class TitForTwoTats(Bot):
     """A class containing the functionality of a bot that implements the Prisoner's Dilemma strategy 'Tit for 2 Tats' - a strategy which cooperates until the opponent defects twice in a row then only defects."""
 
+    BLURB = "Tit for 2 tats is a strategy which gives you exactly 2 chances to keep its trust."
+    NAME = "Tit for 2 Tats"
+
     @classmethod
     def get_action(cls, game_state: GameState) -> Action:
         defects: int = 0
@@ -102,6 +127,9 @@ class TitForTwoTats(Bot):
 class GrimTrigger(Bot):
     """A class containing the functionality of a bot that implements the Prisoner's Dilemma strategy 'Grim Trigger' - cooperates until the opponent first defects, from then on only defects."""
 
+    BLURB = "Grim trigger is a strategy that does not forgive, ever."
+    NAME = "Grim Trigger"
+
     @classmethod
     def get_action(cls, game_state: GameState) -> Action:
         # Check if player defected in any round so far.
@@ -118,6 +146,8 @@ class GrimTrigger(Bot):
 class Prober(Bot):
     """A class containing the functionality of a bot that implements the Prisoner's Dilemma strategy 'Prober' - starts with a fixed sequence, if the opponent fights back it plays Tit for Tat otherwise only defects."""
 
+    BLURB = "Prober is a strategy which starts with a fixed sequence. The opponents response to the fixed sequence dictate its future actions. It can become either tit for tat or always defect."
+    NAME = "Prober"
     SEQUENCE: list[Action] = [Action.DEFECT, Action.COOPERATE, Action.COOPERATE]
 
     @classmethod
