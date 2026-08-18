@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, jsonify
-from game_models import GameState, Action
-from bots import (
+from app.game_models import GameState, Action
+from app.bots import (
     TitForTat,
     AlwaysDefect,
     AlwaysCooperate,
@@ -9,9 +9,21 @@ from bots import (
     TitForTwoTats,
     GrimTrigger,
     Prober,
+    Bot,
 )
 
 app: Flask = Flask(__name__)
+
+bot_ids: dict[int, type[Bot]] = {
+    1: TitForTat,
+    2: Pavlov,
+    3: TitForTwoTats,
+    4: Random,
+    5: AlwaysCooperate,
+    6: AlwaysDefect,
+    7: GrimTrigger,
+    8: Prober,
+}
 
 
 @app.route("/")
@@ -40,8 +52,17 @@ def game():
     history: list[list[str | None]] | None = data.get("history")
     round: int | None = data.get("round")
     action: Action | str | None = data.get("action")
+    player_total: int | None = data.get("player_total")
+    bot_total: int | None = data.get("bot_total")
 
-    if None in [id, history, round, action]:
+    if (
+        id is None
+        or history is None
+        or round is None
+        or action is None
+        or player_total is None
+        or bot_total is None
+    ):
         return jsonify({"error": "missing data"}), 400
 
     action = Action(action)
@@ -55,30 +76,15 @@ def game():
             else:
                 curr_r.append(None)
 
-            converted_history.append(curr_r)
+        converted_history.append(curr_r)
 
-    game: GameState = GameState(history=[], round=round - 1)
+    game: GameState = GameState(history=converted_history, round=round - 1)
 
     try:
-        match id:
-            case 1:
-                response: Action = TitForTat.get_action(game)
-            case 2:
-                response: Action = Pavlov.get_action(game)
-            case 3:
-                response: Action = TitForTwoTats.get_action(game)
-            case 4:
-                response: Action = Random.get_action(game)
-            case 5:
-                response: Action = AlwaysCooperate.get_action(game)
-            case 6:
-                response: Action = AlwaysDefect.get_action(game)
-            case 7:
-                response: Action = GrimTrigger.get_action(game)
-            case 8:
-                response: Action = Prober.get_action(game)
-            case _:
-                return jsonify({"error": "invalid bot id"}), 400
+        if 0 < id < 9:
+            response: Action = bot_ids[id].get_action(game)
+        else:
+            return jsonify({"error": "invalid bot id"}), 400
     except:
         return jsonify({"error": "bot failed to return an action"}), 400
 
@@ -91,13 +97,19 @@ def game():
     else:
         player_score, bot_score = 1, 1
 
+    if round < 10:
+        explanation: str = f"Your opponent decided to {response.value}."
+    else:
+        explanation: str = (
+            f"{'Congradulations you beat' if player_total > bot_total else 'You lost to' if player_total < bot_total else 'You tied with'} {bot_ids[id].NAME}. {bot_ids[id].BLURB}"
+        )
+
     return (
         jsonify(
             {
                 "player_score": player_score,
                 "bot_score": bot_score,
-                "round": round + 1,
-                "explanation": f"Your opponent decided to {response.value}.",
+                "explanation": explanation,
                 "response": response.value,
             }
         ),

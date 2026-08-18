@@ -4,6 +4,8 @@
     --foreground: #545454;
     --foreground-text: #b7c9e2;
     --element-colour: #7f73e3;
+    --soft-elements: #737373;
+    --button-colour: #74a4e3;
 
     font-size: 18px;
 }
@@ -44,6 +46,10 @@ h3 {
     font-size: 3rem;
 }
 
+h4 {
+    font-size: 2rem;
+}
+
 /* Font classes */
 .architects_daughter {
     font-family: "Architects Daughter", cursive;
@@ -65,6 +71,12 @@ h3 {
     font-style: normal;
     font-variation-settings:
         "wdth" 100;
+}
+
+.caveat {
+    font-family: "Caveat", cursive;
+    font-optical-sizing: auto;
+    font-weight: 700;
 }
 
 /* Style Header and Footer elements. */
@@ -168,23 +180,29 @@ footer>p {
 }
 
 /* Style content blocks */
-.content_block {
+.content_block,
+.play_block {
     display: flex;
     flex-direction: column;
-    min-width: 60%;
     width: max-content;
     margin: auto;
     gap: .5rem;
 }
 
-.content_title {
+.content_block {
+    min-width: 60%;
+}
+
+.content_title,
+.play_title {
     padding-left: 1rem;
     min-width: 50%;
     width: max-content;
     border-bottom: solid 8px var(--element-colour);
 }
 
-.content {
+.content,
+.game {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -194,6 +212,9 @@ footer>p {
 
 .content_text {
     width: 50ch;
+    max-width: 100%;
+    padding: 1rem;
+    box-sizing: border-box;
     font-size: 1rem;
     text-indent: 2rem;
 }
@@ -207,15 +228,118 @@ dfn {
     font-weight: 350;
 }
 
-.content_img {
+.content_img,
+#home_CTA {
     height: 300px;
 }
 
-.content a,
-.content a:visited,
-.content a:hover,
-.content a:active {
+#home_CTA {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: center;
+}
+
+.content p>a,
+.content p>a:visited,
+.content p>a:hover,
+.content p>a:active {
     color: var(--element-colour);
+}
+
+/* Style Play page */
+#play_intro {
+    width: 80ch;
+    margin: auto;
+    padding: 1rem;
+}
+
+#play_games {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.play_block {
+    min-width: 80%;
+}
+
+.interactive {
+    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    min-height: 300px;
+}
+
+.top {
+    margin-bottom: auto;
+}
+
+.bottom {
+    margin-top: auto;
+}
+
+table {
+    width: 40%;
+    min-width: 300px;
+    border-collapse: collapse;
+    margin: 1rem;
+}
+
+th,
+td {
+    padding: .5rem;
+    text-align: center;
+    border: 2px solid var(--soft-elements);
+}
+
+thead th {
+    border-bottom: 4px solid var(--soft-elements);
+}
+
+/* Remove outside borders from table */
+tr :first-child {
+    border-left: none;
+}
+
+tr :last-child {
+    border-right: none;
+}
+
+thead th {
+    border-top: none;
+}
+
+tr:last-child th,
+tr:last-child td {
+    border-bottom: none;
+}
+
+.options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.button {
+    padding: 0.75rem;
+    font-size: 3rem;
+    text-decoration: none;
+    color: #000;
+    background-color: var(--button-colour);
+    width: 200px;
+    border-radius: 3rem;
+    text-align: center;
+}
+
+.result_title,
+.round_title {
+    margin: 1rem;
+}
+
+.explanation {
+    text-indent: 2rem;
+    max-width: 50ch;
 }
 
 /* Only apply to laptops. */
@@ -278,8 +402,31 @@ dfn {
         gap: 0;
     }
 
-    .content_img {
-        height: auto;
+    .interactive {
+        min-height: 0;
+    }
+
+    /* Move images below text on smaller devices. */
+    .content {
+        flex-direction: column;
+    }
+
+    .content_block {
         width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+    }
+
+    .content_img {
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+        margin: 0 auto;
+    }
+
+    .content_title {
+        width: auto;
+        max-width: 100%;
+        overflow-wrap: break-word;
     }
 }

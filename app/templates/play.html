@@ -3,6 +3,14 @@
 {% endblock %} {% block main %}
 <h1 class="inter">Play</h1>
 
+<p id="play_intro" class="roboto">
+	Each game runs for ten rounds against a single opponent. Sometimes you'll be told exactly who you're up against, like
+	the Tit for Tat strategy in the Basics game below — other times they'll only be listed as Mystery, and it's on you to
+	work out their pattern from how they respond to you. Either way, the goal is the same: identify the strategy and
+	exploit it before the ten rounds run out. Win or lose, the opponent's identity and the logic behind their strategy get
+	revealed once the game ends. One thing worth sitting with as you play, though — beating your opponent and winning the
+	game aren't necessarily the same thing.
+</p>
 <!-- Template for Boiler Plate section#play_games>(div.play_block#strat_$>h3.play_title.inter+.game>.interactive>.top>h4.round_title.inter{Round 1:}+.options>a.button.caveat[href="#" onclick="event.preventDefault(); play($, 'cooperate')"]{Co-operate}+a.button.caveat[href="#" onclick="event.preventDefault(); play($, 'defect')"]{Defect}^^.bottom>h4.result_title.inter{Result:}+p.explanation.roboto{As you play explanations will be given...}^^table.roboto>thead>tr>th{Round}+th{You}+th{Opponent}^^tbody>(tr>td{$}+td*2)*10^tfoot>tr>th{Total}+td*2)*8 -->
 <section id="play_games">
 	<div class="play_block" id="strat_1">

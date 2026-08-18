@@ -41,7 +41,7 @@
 	</div>
 
 	<div class="content_block">
-		<h3 class="content_title inter">The Payoff Matrix</h3>
+		<h3 class="content_title inter" id="payoff_matrix">The Payoff Matrix</h3>
 		<div class="content">
 			<p class="content_text roboto">
 				What happens to each suspect depends on the combination of both choices, not just their own — this is usually
@@ -71,12 +71,15 @@
 				>
 				here.
 			</p>
-			<img src="" alt="" class="content_img" />
+			<img
+				src="{{ url_for('static', filename='images/dominant_strat.png') }}"
+				alt="A blue suspect considers whether the other suspect will cooperate or defect, with outcome comparisons showing that defecting gives the better result in either case."
+				class="content_img" />
 		</div>
 	</div>
 
 	<div class="content_block">
-		<h3 class="content_title inter">The Dilemma</h3>
+		<h3 class="content_title inter" id="the_dilemma">The Dilemma</h3>
 		<div class="content">
 			<p class="content_text roboto">
 				Here's the catch: if both suspects follow that same logic, they both defect — and both end up with two years.
@@ -88,7 +91,10 @@
 				— and yet it's worse for both of them than mutual cooperation would have been. That gap, between what's rational
 				for each person individually and what's best for the two of them together, is the dilemma.
 			</p>
-			<img src="" alt="" class="content_img" />
+			<img
+				src="{{ url_for('static', filename='images/nash_equilibrium.png') }}"
+				alt="Two suspects face the outcomes of mutual cooperation and mutual defection, showing that both receive one year when cooperating but two years when defecting."
+				class="content_img" />
 		</div>
 	</div>
 
@@ -107,7 +113,10 @@
 					implies]</span
 				>. Knowing exactly how many rounds you'll play, it turns out, doesn't rescue cooperation at all.
 			</p>
-			<img src="" alt="" class="content_img" />
+			<img
+				src="{{ url_for('static', filename='images/known_number.png') }}"
+				alt="A ten-round sequence shows both suspects reasoning backward from the final round, where both defect, with each earlier round also leading to defection."
+				class="content_img" />
 		</div>
 	</div>
 
@@ -149,7 +158,7 @@
 	</div>
 
 	<div class="content_block">
-		<h3 class="content_title inter">Other Strategies</h3>
+		<h3 class="content_title inter" id="strategies">Other Strategies</h3>
 		<div class="content">
 			<p class="content_text roboto">
 				Tit for tat is far from the only approach that's been tried. Researchers have tested countless repeated-play

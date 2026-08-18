@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from game_models import GameState, Action, GameError
+from app.game_models import GameState, Action, GameError
 import random
 
 
@@ -28,6 +28,7 @@ class TitForTat(Bot):
         if game_state.round == 0:
             return Action.COOPERATE
 
+        print(game_state, round)
         # Get the player's action from last round
         last_action: Action | None = game_state.history[game_state.round - 1][0]
 
@@ -83,6 +84,9 @@ class Pavlov(Bot):
 
     @classmethod
     def get_action(cls, game_state: GameState) -> Action:
+        if game_state.round == 0:
+            return Action.COOPERATE
+
         last_player_action, last_bot_action = game_state.history[game_state.round - 1]
 
         if last_bot_action == Action.COOPERATE:
@@ -104,23 +108,21 @@ class Pavlov(Bot):
 class TitForTwoTats(Bot):
     """A class containing the functionality of a bot that implements the Prisoner's Dilemma strategy 'Tit for 2 Tats' - a strategy which cooperates until the opponent defects twice in a row then only defects."""
 
-    BLURB = "Tit for 2 tats is a strategy which gives you exactly 2 chances to keep its trust."
-    NAME = "Tit for 2 Tats"
+    BLURB = "Tit for two tats is a strategy which is more forgiving than tit for tat, until you break its trust and betray it twice in a row."
+    NAME = "Tit for Two Tats"
 
     @classmethod
     def get_action(cls, game_state: GameState) -> Action:
-        defects: int = 0
-
-        # Count the times Player has defected.
+        # Check if player has defected twice in a row.
         for r in range(game_state.round):
-            if game_state.history[r][0] == Action.DEFECT:
-                defects += 1
+            if (
+                game_state.history[r][0]
+                == game_state.history[r + 1][0]
+                == Action.DEFECT
+            ):
+                return Action.DEFECT
 
-                # If player defected at least twice defect.
-                if defects == 2:
-                    return Action.DEFECT
-
-        # If player has not defected at least twice co-operate.
+        # If player has not defected twice in a row co-operate.
         return Action.COOPERATE
 
 
@@ -133,8 +135,8 @@ class GrimTrigger(Bot):
     @classmethod
     def get_action(cls, game_state: GameState) -> Action:
         # Check if player defected in any round so far.
-        for round in game_state.history[: game_state.round + 1]:
-            if round[0] == None:
+        for round in game_state.history[: game_state.round]:
+            if round[0] is None:
                 raise GameError
 
             if round[0] == Action.DEFECT:
