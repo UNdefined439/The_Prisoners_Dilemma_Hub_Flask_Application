@@ -40,3 +40,5 @@ Formatting was done with:
 - Prettier for html formatting
 - Black formatter for Python formatting
 - And VS Code defaults for all other formatting.
+
+Code branches show the different states of the code versions as used in trialling. For example, the branch 'version_1_base' is the original code of version 1 while the branch 'version_1_trial' is the code with alterations. The versions get trialled and based on those results changes may be made. This is shown in '.\tests\trials.docx'.
