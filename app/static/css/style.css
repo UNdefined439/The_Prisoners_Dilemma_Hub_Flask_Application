@@ -217,7 +217,6 @@ footer>p {
     padding: 1rem;
     box-sizing: border-box;
     font-size: 1rem;
-    text-indent: 2rem;
 }
 
 dfn {
@@ -229,9 +228,8 @@ dfn {
     font-weight: 350;
 }
 
-.content_img,
-#home_CTA {
-    height: 300px;
+.content_img {
+    height: 400px;
 }
 
 #home_CTA {
@@ -239,6 +237,7 @@ dfn {
     flex-direction: column;
     gap: 2rem;
     justify-content: center;
+    height: 300px;
 }
 
 .content p>a,
@@ -286,6 +285,7 @@ table {
     min-width: 300px;
     border-collapse: collapse;
     margin: 1rem;
+    height: 500px;
 }
 
 th,
@@ -341,7 +341,6 @@ tr:last-child td {
 }
 
 .explanation {
-    text-indent: 2rem;
     max-width: 50ch;
     margin: 1rem;
     box-sizing: border-box;
@@ -442,5 +441,19 @@ tr:last-child td {
         width: auto;
         max-width: 100%;
         overflow-wrap: break-word;
+    }
+
+    h1 {
+        font-size: 4rem;
+        text-align: center;
+        padding: 1rem;
+    }
+
+    h3 {
+        font-size: 2rem;
+    }
+
+    h4 {
+        font-size: 1.5rem;
     }
 }
