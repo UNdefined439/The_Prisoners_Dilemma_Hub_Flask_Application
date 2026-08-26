@@ -231,7 +231,7 @@ dfn {
 
 .content_img,
 #home_CTA {
-    height: 300px;
+    height: 400px;
 }
 
 #home_CTA {
@@ -442,5 +442,19 @@ tr:last-child td {
         width: auto;
         max-width: 100%;
         overflow-wrap: break-word;
+    }
+
+    h1 {
+        font-size: 4rem;
+        text-align: center;
+        padding: 1rem;
+    }
+
+    h3 {
+        font-size: 2rem;
+    }
+
+    h4 {
+        font-size: 1.5rem;
     }
 }
