@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from typing import ClassVar
 from enum import Enum
 
 
@@ -15,6 +16,7 @@ class GameState:
 
     history: list[list[Action | None]]
     round: int
+    MAXROUNDS: ClassVar[int] = 10
 
 
 class GameError(Exception):

@@ -7,7 +7,8 @@ from app.bots import (
     GrimTrigger,
     Prober,
 )
-from app.game_models import GameState, Action
+from app.game_models import GameState, Action, GameError
+import pytest
 
 possible_rounds: dict[str, list[Action | None]] = {
     "None": [None, None],
@@ -95,9 +96,24 @@ game_states: list[GameState] = [
         ],
         0,
     ),
+    GameState(
+        [
+            possible_rounds["None"],
+            possible_rounds["None"],
+            possible_rounds["None"],
+            possible_rounds["None"],
+            possible_rounds["None"],
+            possible_rounds["None"],
+            possible_rounds["None"],
+            possible_rounds["None"],
+            possible_rounds["None"],
+            possible_rounds["None"],
+        ],
+        6,
+    ),
 ]
 
-# Note: Game states hold values that don't match every strategy's play. The test is just what a bot would do if put into the situation of the game state and was to now apply their logic.
+# NOTE: Game states hold values that don't match every strategy's play. The test is just what a bot would do if put into the situation of the game state and was to now apply their logic.
 
 
 def test_TitForTat():
@@ -107,6 +123,10 @@ def test_TitForTat():
     assert TitForTat.get_action(game_states[3]) == Action.COOPERATE
     assert TitForTat.get_action(game_states[4]) == Action.COOPERATE
 
+    # Test if a Game Error is raised when given an invalid game state.
+    with pytest.raises(GameError):
+        TitForTat.get_action(game_states[5])
+
 
 def test_AlwaysDefect():
     assert AlwaysDefect.get_action(game_states[0]) == Action.DEFECT
@@ -114,6 +134,9 @@ def test_AlwaysDefect():
     assert AlwaysDefect.get_action(game_states[2]) == Action.DEFECT
     assert AlwaysDefect.get_action(game_states[3]) == Action.DEFECT
     assert AlwaysDefect.get_action(game_states[4]) == Action.DEFECT
+
+    # Strategy should be able to output a result regardless of the invalid game state.
+    assert AlwaysDefect.get_action(game_states[5]) == Action.DEFECT
 
 
 def test_AlwaysCooperate():
@@ -123,9 +146,12 @@ def test_AlwaysCooperate():
     assert AlwaysCooperate.get_action(game_states[3]) == Action.COOPERATE
     assert AlwaysCooperate.get_action(game_states[4]) == Action.COOPERATE
 
+    # Strategy should be able to output a result regardless of the invalid game state.
+    assert AlwaysCooperate.get_action(game_states[5]) == Action.COOPERATE
+
 
 def test_Random():
-    # Its not viable to test this result.
+    # It is not viable to test this result.
     pass
 
 
@@ -136,6 +162,10 @@ def test_Pavlov():
     assert Pavlov.get_action(game_states[3]) == Action.DEFECT
     assert Pavlov.get_action(game_states[4]) == Action.COOPERATE
 
+    # Test if a Game Error is raised when given an invalid game state.
+    with pytest.raises(GameError):
+        Pavlov.get_action(game_states[5])
+
 
 def test_TitForTwoTats():
     assert TitForTwoTats.get_action(game_states[0]) == Action.COOPERATE
@@ -143,6 +173,10 @@ def test_TitForTwoTats():
     assert TitForTwoTats.get_action(game_states[2]) == Action.DEFECT
     assert TitForTwoTats.get_action(game_states[3]) == Action.DEFECT
     assert TitForTwoTats.get_action(game_states[4]) == Action.COOPERATE
+
+    # Test if a Game Error is raised when given an invalid game state.
+    with pytest.raises(GameError):
+        TitForTwoTats.get_action(game_states[5])
 
 
 def test_GrimTrigger():
@@ -152,6 +186,10 @@ def test_GrimTrigger():
     assert GrimTrigger.get_action(game_states[3]) == Action.DEFECT
     assert GrimTrigger.get_action(game_states[4]) == Action.COOPERATE
 
+    # Test if a Game Error is raised when given an invalid game state.
+    with pytest.raises(GameError):
+        GrimTrigger.get_action(game_states[5])
+
 
 def test_Prober():
     assert Prober.get_action(game_states[0]) == Action.COOPERATE
@@ -159,3 +197,7 @@ def test_Prober():
     assert Prober.get_action(game_states[2]) == Action.DEFECT
     assert Prober.get_action(game_states[3]) == Action.DEFECT
     assert Prober.get_action(game_states[4]) == Action.DEFECT
+
+    # Test if a Game Error is raised when given an invalid game state.
+    with pytest.raises(GameError):
+        Prober.get_action(game_states[5])

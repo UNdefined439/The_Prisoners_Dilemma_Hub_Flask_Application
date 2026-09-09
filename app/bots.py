@@ -89,6 +89,10 @@ class Pavlov(Bot):
 
         last_player_action, last_bot_action = game_state.history[game_state.round - 1]
 
+        # If invalid game state is given raise GameError.
+        if last_bot_action is None or last_player_action is None:
+            raise GameError
+
         if last_bot_action == Action.COOPERATE:
             # Return Co-operate if last round was high rewarding (both co-operated) else (player defected) defect to fight back.
             return (
@@ -121,6 +125,9 @@ class TitForTwoTats(Bot):
                 == Action.DEFECT
             ):
                 return Action.DEFECT
+
+            if game_state.history[r][0] is None:
+                raise GameError
 
         # If player has not defected twice in a row co-operate.
         return Action.COOPERATE
