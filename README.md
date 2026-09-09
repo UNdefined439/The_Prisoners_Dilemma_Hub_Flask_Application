@@ -28,6 +28,7 @@ Run pytest: `python -m pytest .\tests\test_bots.py`
   - Design contains the original design and mockups
   - notes.docx contains notes on the processes used to create the project
   - relevant_implications.docx outlines how the design deals with the relevant implications.
+  - **'demos' contains video demonstrations of the applications usage.**
 - Raw assets contains the raw AI generated images.
 - Tests:
   - tests.docx contains testing and trialling report.
