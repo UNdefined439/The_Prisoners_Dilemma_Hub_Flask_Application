@@ -101,7 +101,7 @@ def game():
         explanation: str = f"Your opponent decided to {response.value}."
     else:
         explanation: str = (
-            f"{'Congradulations you beat' if player_total > bot_total else 'You lost to' if player_total < bot_total else 'You tied with'} {bot_ids[id].NAME}. {bot_ids[id].BLURB}"
+            f"{'Congradulations you beat' if player_total + player_score > bot_total + bot_score else 'You lost to' if player_total + player_score < bot_total + bot_score else 'You tied with'} {bot_ids[id].NAME}. {bot_ids[id].BLURB}"
         )
 
     return (

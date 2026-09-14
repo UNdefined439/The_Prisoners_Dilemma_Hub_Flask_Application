@@ -28,7 +28,6 @@ class TitForTat(Bot):
         if game_state.round == 0:
             return Action.COOPERATE
 
-        print(game_state, round)
         # Get the player's action from last round
         last_action: Action | None = game_state.history[game_state.round - 1][0]
 
@@ -161,7 +160,7 @@ class Prober(Bot):
 
     @classmethod
     def get_action(cls, game_state: GameState) -> Action:
-        # Initial
+        # Initial sequence to probe oponent.
         if game_state.round < 3:
             return cls.SEQUENCE[game_state.round]
 

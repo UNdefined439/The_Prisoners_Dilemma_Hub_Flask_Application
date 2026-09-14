@@ -178,6 +178,7 @@ footer h3 {
 footer>p {
     width: 80%;
     margin: auto;
+    padding: 1rem;
 }
 
 /* Style content blocks */
@@ -386,6 +387,15 @@ tr:last-child td {
     }
 }
 
+/* Only apply to 1024px screens or smaller*/
+@media screen and (max-width: 1024px) {
+
+    /* Move images below text on smaller devices. */
+    .content {
+        flex-direction: column;
+    }
+}
+
 /* Only apply to tablets and smaller devices. */
 @media screen and (max-width: 768px) {
 
@@ -409,11 +419,6 @@ tr:last-child td {
 
     .interactive {
         min-height: 0;
-    }
-
-    /* Move images below text on smaller devices. */
-    .content {
-        flex-direction: column;
     }
 
     .content_block,
