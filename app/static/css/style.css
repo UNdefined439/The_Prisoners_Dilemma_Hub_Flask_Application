@@ -339,6 +339,7 @@ tr:last-child td {
 .result_title,
 .round_title {
     margin: 1rem;
+    font-size: 3rem;
 }
 
 .explanation {
