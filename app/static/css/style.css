@@ -217,7 +217,6 @@ footer>p {
     max-width: 100%;
     padding: 1rem;
     box-sizing: border-box;
-    font-size: 1rem;
     text-indent: 2rem;
 }
 
@@ -339,6 +338,7 @@ tr:last-child td {
 .result_title,
 .round_title {
     margin: 1rem;
+    font-size: 2.5rem;
 }
 
 .explanation {
@@ -350,6 +350,10 @@ tr:last-child td {
 
 /* Only apply to laptops. */
 @media screen and (min-width: 1024px) {
+
+    p {
+        font-size: 20px;
+    }
 
     .logo {
         margin: auto;
